@@ -11,7 +11,7 @@ import { ReactComponent as Logo } from '../../assets/crown.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-import { selectCartHidden} from '../../redux/cart/cart.selector';
+import { selectCartHidden } from '../../redux/cart/cart.selector';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 
 import './header.styles.scss';
@@ -30,22 +30,15 @@ const Header = ({ currentUser, hidden }) => (
                     :
                     <Link className='option' to='/signin' >SIGN IN</Link>
             }
-            <CartIcon/>
+            <CartIcon />
         </div>
-        { hidden ? null : <CartDropdown/>}
+        {hidden ? null : <CartDropdown />}
     </div>
 );
-
-
-// const mapStateToProps = (state) => ({
-//     currentUser: selectCurrentUser(state),
-//     hidden: selectCartHidden(state)
-// });
 
 const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
     hidden: selectCartHidden
 });
-
 
 export default connect(mapStateToProps)(Header);
